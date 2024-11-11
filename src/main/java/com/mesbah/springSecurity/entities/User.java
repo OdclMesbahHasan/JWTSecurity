@@ -19,6 +19,8 @@ public class User implements UserDetails {
 
     private String firstName;
 
+    private String secondName;
+
     private String lastName;
 
     private String email;
