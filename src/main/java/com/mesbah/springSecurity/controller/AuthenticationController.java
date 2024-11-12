@@ -1,5 +1,8 @@
 package com.mesbah.springSecurity.controller;
 
+import com.mesbah.springSecurity.dto.JwtAuthenticationResponse;
+import com.mesbah.springSecurity.dto.RefreshTokenRequest;
+import com.mesbah.springSecurity.dto.SignInRequest;
 import com.mesbah.springSecurity.dto.SignUpRequest;
 import com.mesbah.springSecurity.services.AuthenticationService;
 import com.mesbah.springSecurity.entities.User;
@@ -19,6 +22,16 @@ public class AuthenticationController {
     @PostMapping("/signUp")
     public ResponseEntity<User> signUp(@RequestBody SignUpRequest signUpRequest) {
         return ResponseEntity.ok(authenticationService.signUp(signUpRequest));
+    }
+
+    @PostMapping("/signIn")
+    public ResponseEntity<JwtAuthenticationResponse> signIn(@RequestBody SignInRequest signInRequest) {
+        return ResponseEntity.ok(authenticationService.signIn(signInRequest));
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<JwtAuthenticationResponse> refresh(@RequestBody RefreshTokenRequest refreshTokenRequest) {
+        return ResponseEntity.ok(authenticationService.refreshToken(refreshTokenRequest));
     }
 
 }
